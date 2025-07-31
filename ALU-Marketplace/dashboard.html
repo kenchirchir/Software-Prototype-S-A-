@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <title>ALU Marketplace - Seller Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/dashstyle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Marcellus&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <path d="M31.008 27.231l-7.58-6.447c-0.784-0.705-1.622-1.029-2.299-0.998 1.789-2.096 2.87-4.815 2.87-7.787 0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12c2.972 0 5.691-1.081 7.787-2.87-0.031 0.677 0.293 1.515 0.998 2.299l6.447 7.58c1.104 1.226 2.907 1.33 4.007 0.23s0.997-2.903-0.23-4.007zM12 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"></path>
+    </symbol>
+    <symbol id="user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <path d="M18 22.082v-1.649c2.203-1.241 4-4.337 4-7.432 0-4.971 0-9-6-9s-6 4.029-6 9c0 3.096 1.797 6.191 4 7.432v1.649c-6.784 0.555-12 3.888-12 7.918h28c0-4.030-5.216-7.364-12-7.918z"></path>
+    </symbol>
+    <symbol id="cart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <path d="M12 29c0 1.657-1.343 3-3 3s-3-1.343-3-3c0-1.657 1.343-3 3-3s3 1.343 3 3z"></path>
+      <path d="M32 29c0 1.657-1.343 3-3 3s-3-1.343-3-3c0-1.657 1.343-3 3-3s3 1.343 3 3z"></path>
+      <path d="M32 16v-12h-24c0-1.105-0.895-2-2-2h-6v2h4l1.502 12.877c-0.915 0.733-1.502 1.859-1.502 3.123 0 2.209 1.791 4 4 4h24v-2h-24c-1.105 0-2-0.895-2-2 0-0.007 0-0.014 0-0.020l26-3.98z"></path>
+    </symbol>
+  </svg>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/alu-logo.png" alt="logo" style="max-height: 40px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="shop.html">Shop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="upload-item.html">Sell</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="seller-dashboard.html">Dashboard</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="header-controls d-flex">
+          <div class="user-controls position-relative me-4">
+            <a href="#" class="text-white">
+              <svg class="svg-icon" width="25" height="25">
+                <use xlink:href="#user"></use>
+              </svg>
+            </a>
+            <div class="dropdown-menu position-absolute bg-white p-3" style="min-width: 200px; right: 0; top: 100%; display: none;">
+              <a href="login.html" class="dropdown-item py-2">Login</a>
+              <a href="signup.html" class="dropdown-item py-2">Sign Up</a>
+            </div>
+          </div>
+          <div class="cart-controls me-3">
+            <a href="add-to-cart.html" class="text-white">
+              <svg class="svg-icon" width="25" height="25">
+                <use xlink:href="#cart"></use>
+              </svg>
+              <span class="cart-count bg-primary text-white">2</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-lg-2 px-0 sidebar d-none d-lg-block">
+        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+          <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100" id="menu">
+            <li class="nav-item w-100">
+              <a href="#" class="nav-link active">
+                <i class="bi bi-speedometer2"></i> Dashboard
+              </a>
+            </li>
+            <li class="nav-item w-100">
+              <a href="#" class="nav-link">
+                <i class="bi bi-bag"></i> Products
+              </a>
+            </li>
+            <li class="nav-item w-100">
+              <a href="#" class="nav-link">
+                <i class="bi bi-cart"></i> Orders
+              </a>
+            </li>
+            <li class="nav-item w-100">
+              <a href="#" class="nav-link">
+                <i class="bi bi-star"></i> Reviews
+              </a>
+            </li>
+            <li class="nav-item w-100">
+              <a href="#" class="nav-link">
+                <i class="bi bi-graph-up"></i> Analytics
+              </a>
+            </li>
+            <li class="nav-item w-100">
+              <a href="#" class="nav-link">
+                <i class="bi bi-wallet2"></i> Earnings
+              </a>
+            </li>
+            <li class="nav-item w-100">
+              <a href="#" class="nav-link">
+                <i class="bi bi-gear"></i> Settings
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="col-lg-10 py-4">
+        <div class="container">
+          <!-- Mobile Sidebar Toggle -->
+          <div class="d-lg-none mb-4">
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu">
+              <i class="bi bi-list"></i> Menu
+            </button>
+
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarMenu" aria-labelledby="sidebarMenuLabel">
+              <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="sidebarMenuLabel">Dashboard Menu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body">
+                <ul class="nav nav-pills flex-column">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                      <i class="bi bi-speedometer2"></i> Dashboard
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="bi bi-bag"></i> Products
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="bi bi-cart"></i> Orders
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="bi bi-star"></i> Reviews
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="bi bi-graph-up"></i> Analytics
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="bi bi-wallet2"></i> Earnings
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="bi bi-gear"></i> Settings
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dashboard Header -->
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="mb-0">Seller Dashboard</h1>
+            <div>
+              <button class="btn btn-outline-primary me-2">
+                <i class="bi bi-plus-lg"></i> Add New Product
+              </button>
+              <button class="btn btn-primary">
+                <i class="bi bi-download"></i> Export Data
+              </button>
+            </div>
+          </div>
+
+          <!-- Stats Cards -->
+          <div class="row mb-4">
+            <div class="col-md-3 mb-4 mb-md-0">
+              <div class="dashboard-card stat-card revenue">
+                <h6 class="stat-label">Total Revenue</h6>
+                <p class="stat-value">RWF 125,400</p>
+                <p class="stat-change positive">
+                  <i class="bi bi-arrow-up"></i> 12.5% from last month
+                </p>
+              </div>
+            </div>
+            <div class="col-md-3 mb-4 mb-md-0">
+              <div class="dashboard-card stat-card orders">
+                <h6 class="stat-label">Total Orders</h6>
+                <p class="stat-value">48</p>
+                <p class="stat-change positive">
+                  <i class="bi bi-arrow-up"></i> 8.2% from last month
+                </p>
+              </div>
+            </div>
+            <div class="col-md-3 mb-4 mb-md-0">
+              <div class="dashboard-card stat-card products">
+                <h6 class="stat-label">Active Products</h6>
+                <p class="stat-value">15</p>
+                <p class="stat-change positive">
+                  <i class="bi bi-arrow-up"></i> 3 new this month
+                </p>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="dashboard-card stat-card reviews">
+                <h6 class="stat-label">Average Rating</h6>
+                <p class="stat-value">4.8</p>
+                <p class="stat-change positive">
+                  <i class="bi bi-arrow-up"></i> 0.2 from last month
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts -->
+          <div class="row mb-4">
+            <div class="col-12">
+              <div class="dashboard-card h-100">
+                <h5 class="mb-4">Product Categories</h5>
+                <div class="d-flex justify-content-center">
+                  <div style="max-width: 400px; margin: 0 auto;">
+                    <canvas id="categoryChart" height="300"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Popular Products and Reviews -->
+          <div class="row mb-4">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+              <div class="dashboard-card h-100">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <h5 class="mb-0">Popular Products</h5>
+                  <a href="#" class="btn-link">View All</a>
+                </div>
+                <div class="product-list">
+                  <div class="product-list-item">
+                    <img src="images/product1.jpg" alt="Product">
+                    <div class="product-info">
+                      <h6 class="product-title">ALU Branded Hoodie</h6>
+                      <p class="product-meta">15 sold this month</p>
+                    </div>
+                    <div class="product-price">RWF 12,000</div>
+                  </div>
+                  <div class="product-list-item">
+                    <img src="images/product2.jpg" alt="Product">
+                    <div class="product-info">
+                      <h6 class="product-title">Wireless Headphones</h6>
+                      <p class="product-meta">12 sold this month</p>
+                    </div>
+                    <div class="product-price">RWF 25,000</div>
+                  </div>
+                  <div class="product-list-item">
+                    <img src="images/product3.jpg" alt="Product">
+                    <div class="product-info">
+                      <h6 class="product-title">Laptop Sleeve</h6>
+                      <p class="product-meta">8 sold this month</p>
+                    </div>
+                    <div class="product-price">RWF 8,500</div>
+                  </div>
+                  <div class="product-list-item">
+                    <img src="images/product4.jpg" alt="Product">
+                    <div class="product-info">
+                      <h6 class="product-title">Water Bottle</h6>
+                      <p class="product-meta">7 sold this month</p>
+                    </div>
+                    <div class="product-price">RWF 3,500</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="dashboard-card h-100">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <h5 class="mb-0">Recent Reviews</h5>
+                  <a href="#" class="btn-link">View All</a>
+                </div>
+                <div class="review-list">
+                  <div class="review-item">
+                    <div class="review-header">
+                      <span class="review-author">John D.</span>
+                      <span class="review-date">2 days ago</span>
+                    </div>
+                    <div class="review-rating">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="review-text">Great quality hoodie! The fabric is thick and comfortable. Will definitely buy more products from this seller.</p>
+                  </div>
+                  <div class="review-item">
+                    <div class="review-header">
+                      <span class="review-author">Sarah M.</span>
+                      <span class="review-date">1 week ago</span>
+                    </div>
+                    <div class="review-rating">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star"></i>
+                    </div>
+                    <p class="review-text">The headphones work great and the battery life is impressive. Shipping was fast too!</p>
+                  </div>
+                  <div class="review-item">
+                    <div class="review-header">
+                      <span class="review-author">Michael T.</span>
+                      <span class="review-date">2 weeks ago</span>
+                    </div>
+                    <div class="review-rating">
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-fill"></i>
+                      <i class="bi bi-star-half"></i>
+                    </div>
+                    <p class="review-text">The laptop sleeve fits my MacBook perfectly and provides good protection. The design is sleek and professional.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Orders -->
+          <div class="row">
+            <div class="col-12">
+              <div class="dashboard-card">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <h5 class="mb-0">Recent Orders</h5>
+                  <a href="#" class="btn-link">View All Orders</a>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Product</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>#ORD-2023-001</td>
+                        <td>John Doe</td>
+                        <td>ALU Branded Hoodie</td>
+                        <td>May 15, 2023</td>
+                        <td>RWF 12,000</td>
+                        <td><span class="badge bg-success">Delivered</span></td>
+                        <td><button class="btn btn-sm btn-outline-primary">Details</button></td>
+                      </tr>
+                      <tr>
+                        <td>#ORD-2023-002</td>
+                        <td>Sarah Miller</td>
+                        <td>Wireless Headphones</td>
+                        <td>May 14, 2023</td>
+                        <td>RWF 25,000</td>
+                        <td><span class="badge bg-warning text-dark">Shipped</span></td>
+                        <td><button class="btn btn-sm btn-outline-primary">Details</button></td>
+                      </tr>
+                      <tr>
+                        <td>#ORD-2023-003</td>
+                        <td>Michael Taylor</td>
+                        <td>Laptop Sleeve</td>
+                        <td>May 12, 2023</td>
+                        <td>RWF 8,500</td>
+                        <td><span class="badge bg-info">Processing</span></td>
+                        <td><button class="btn btn-sm btn-outline-primary">Details</button></td>
+                      </tr>
+                      <tr>
+                        <td>#ORD-2023-004</td>
+                        <td>Emily Johnson</td>
+                        <td>Water Bottle</td>
+                        <td>May 10, 2023</td>
+                        <td>RWF 3,500</td>
+                        <td><span class="badge bg-success">Delivered</span></td>
+                        <td><button class="btn btn-sm btn-outline-primary">Details</button></td>
+                      </tr>
+                      <tr>
+                        <td>#ORD-2023-005</td>
+                        <td>David Wilson</td>
+                        <td>ALU T-Shirt</td>
+                        <td>May 8, 2023</td>
+                        <td>RWF 7,500</td>
+                        <td><span class="badge bg-success">Delivered</span></td>
+                        <td><button class="btn btn-sm btn-outline-primary">Details</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/script.min.js"></script>
+  <script>
+    // User dropdown toggle
+    document.querySelector('.user-controls').addEventListener('mouseenter', function() {
+      this.querySelector('.dropdown-menu').style.display = 'block';
+    });
+
+    document.querySelector('.user-controls').addEventListener('mouseleave', function() {
+      this.querySelector('.dropdown-menu').style.display = 'none';
+    });
+
+    // Category Chart
+    const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+    const categoryChart = new Chart(categoryCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Clothing', 'Electronics', 'Books', 'Accessories', 'Other'],
+        datasets: [{
+          data: [35, 25, 15, 15, 10],
+          backgroundColor: [
+            '#002e6d',
+            '#28a745',
+            '#fd7e14',
+            '#6f42c1',
+            '#6c757d'
+          ],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: {
+          duration: 0 // Disable animations completely
+        },
+        plugins: {
+          legend: {
+            position: 'bottom'
+          }
+        },
+        cutout: '70%'
+      }
+    });
+  </script>
+  <script src="/ALU-Marketplace/js/view-dashboard.js"></script>
+</body>
+</html>
+

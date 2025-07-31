@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>ALU MARKETPLACE</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="author" content="TemplatesJungle">
+  <meta name="keywords" content="ecommerce,fashion,store">
+  <meta name="description" content="Bootstrap 5 Fashion Store HTML CSS Template">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/vendor.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  /* Consistent image sizing and spacing */
+  .product-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+  /* Make category images consistent */
+  .main-swiper .image-holder img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+  }
+
+  /* Fix collection image to match section height */
+  .collection .image-holder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .collection .column-container {
+    height: 100%;
+  }
+
+  /* Fix navigation visibility */
+  .navbar-nav {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    background-color: transparent;
+    padding: 0;
+  }
+
+  /* Only hide dropdown menus until hover */
+  .dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Adjust nav-menu-container */
+  .nav-menu-container:hover .navbar-nav {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Reduced navbar height */
+  .navbar {
+    padding: 0.5rem 3rem !important;
+  }
+
+  /* Navigation hover effect */
+  .nav-menu-container {
+    position: relative;
+  }
+
+
+  /* Spacing between product items */
+  .swiper-slide {
+    padding: 10px;
+  }
+
+  /* User account dropdown */
+  .user-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .user-dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+
+  .user-dropdown:hover .user-dropdown-content {
+    display: block;
+  }
+
+  .user-dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .user-dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+</style>
+
+</head>
+
+<body class="homepage">
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <defs>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-left" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M17 11H9.41l3.3-3.29a1 1 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33a1 1 0 0 0 0 .76a1 1 0 0 0 .21.33l5 5a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.42L9.41 13H17a1 1 0 0 0 0-2Z" />
+      </symbol>
+      <symbol xmlns="http://www.w3.org/2000/svg" id="arrow-right" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M17.92 11.62a1 1 0 0 0-.21-.33l-5-5a1 1 0 0 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l5-5a1 1 0 0 0 .21-.33a1 1 0 0 0 0-.76Z" />
+      </symbol>
+
+      <symbol xmlns="http://www.w3.org/2000/svg" id="user" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M15.71 12.71a6 6 0 1 0-7.42 0a10 10 0 0 0-6.22 8.18a1 1 0 0 0 2 .22a8 8 0 0 1 15.9 0a1 1 0 0 0 1 .89h.11a1 1 0 0 0 .88-1.1a10 10 0 0 0-6.25-8.19ZM12 12a4 4 0 1 1 4-4a4 4 0 0 1-4 4Z" />
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="preloader text-white fs-6 text-uppercase overflow-hidden"></div>
+
+  <div class="search-popup">
+    <div class="search-popup-container">
+
+      <h5 class="cat-list-title">Browse Categories</h5>
+
+      <ul id="cat-list" class="cat-list">
+        <li class="cat-list-item">
+          <a href="#" title="Jackets">Jackets</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="T-shirts">T-shirts</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Handbags">Handbags</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Accessories">Accessories</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Cosmetics">Cosmetics</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Dresses">Dresses</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Jumpsuits">Jumpsuits</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg text-uppercase fs-6 border-bottom align-items-center" style="background-color: #002e6d;">
+  <div class="container-fluid">
+    <div class="row justify-content-between align-items-center w-100">
+
+      <div class="col-auto">
+        <a class="navbar-brand text-white" href="index.html">
+          <img src="images/alu-logo.png" alt="Logo" width="60" height="48">
+        </a>
+      </div>
+
+      <div class="col-auto nav-menu-container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+              aria-label="Close"></button>
+          </div>
+
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 gap-1 gap-md-5 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active text-white" href="index.html">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="dropdownShop" data-bs-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Shop</a>
+                <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownShop">
+                  <li>
+                    <a href="shop.html" class="dropdown-item item-anchor">Accessories </a>
+                  </li>
+                  <li>
+                    <a href="shop.html" class="dropdown-item item-anchor">Mens Wear </a>
+                  </li>
+                  <li>
+                    <a href="shop.html" class="dropdown-item item-anchor">Footwear</a>
+                  </li>
+                  <li>
+                    <a href="shop.html" class="dropdown-item item-anchor">Jewelry </a>
+                  </li>
+                  <li>
+                    <a href="shop.html" class="dropdown-item item-anchor">Handbags </a>
+                  </li>
+                  <li>
+                    <a href="shop.html" class="dropdown-item item-anchor">Hats/Beanie</a>
+                  </li>
+                  <li>
+                    <a href="shop.html" class="dropdown-item item-anchor">Order Tracking </a>
+                  </li>
+                </ul>
+              </li>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="dropdownPages" data-bs-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">Trending</a>
+                <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownPages">
+                  <li>
+                    <a href="#new-arrival" class="dropdown-item item-anchor">Explore(New!) </a>
+                  </li>
+                  <li>
+                    <a href="#collection" class="dropdown-item item-anchor">Coming soon</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link active text-white" href="#footer">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-3 col-lg-auto">
+        <ul class="list-unstyled d-flex m-0">
+          <li class="d-none d-lg-block">
+          </li>
+          <li class="d-none d-lg-block">
+            <a href="index.html" class="text-uppercase mx-3 text-white" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
+              aria-controls="offcanvasCart">Cart <span class="cart-count">(0)</span>
+            </a>
+          </li>
+          <li class="d-lg-none">
+            <a href="#" class="mx-2">
+              <svg width="24" height="24" viewBox="0 0 24 24">
+                <use xlink:href="#heart"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="d-lg-none">
+            <a href="#" class="mx-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
+              aria-controls="offcanvasCart">
+              <svg width="24" height="24" viewBox="0 0 24 24">
+                <use xlink:href="#cart"></use>
+              </svg>
+            </a>
+          </li>
+          <li class="user-dropdown mx-2">
+            <a href="#" class="text-white">
+              <svg width="24" height="24" viewBox="0 0 24 24">
+                <use xlink:href="#user"></use>
+              </svg>
+            </a>
+            <div class="user-dropdown-content">
+              <a href="login.html">Login</a>
+              <a href="signup.html">Sign Up</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</nav>
+
+  <section id="billboard" class="bg-light py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <h1 class="section-title text-center mt-4" data-aos="fade-up">ALU Marketplace</h1>
+        <div class="col-md-6 text-center" data-aos="fade-up" data-aos-delay="300">
+          <p>At Alu Marketplace, we empower students at the African Leadership University to buy and sell unique handmade items,
+             fostering creativity and community within our vibrant student body.</p>
+          <h2 class="section-title text-center mt-4" data-aos="fade-up" data-aos-delay="600">Explore Popular Categories</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="swiper main-swiper py-4" data-aos="fade-up" data-aos-delay="600">
+          <div class="swiper-wrapper d-flex border-animation-left">
+            <div class="swiper-slide">
+              <div class="banner-item image-zoom-effect">
+                <div class="image-holder">
+                  <a href="shop.html">
+                    <img src="images\sweater.jpg" alt="product" class="img-fluid">
+                  </a>
+                </div>
+                <div class="banner-content py-4">
+                  <h5 class="element-title text-uppercase">
+                    <a href="index.html" class="item-anchor">Hoodies</a>
+                  </h5>
+                  <p>Stay cozy and stylish with our premium ALU Hoodie! Made from soft, 
+                    high-quality fabric, this hoodie is perfect for chilly days on campus or casual outings.</p>
+                  <div class="btn-left">
+                    <a href="shop.html" class="btn-link fs-6 text-uppercase item-anchor text-decoration-none">Discover Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="banner-item image-zoom-effect">
+                <div class="image-holder">
+                  <a href="shop.html">
+                    <img src="images\leatherjacket.jpg" alt="product" class="img-fluid">
+                  </a>
+                </div>
+                <div class="banner-content py-4">
+                  <h5 class="element-title text-uppercase">
+                    <a href="index.html" class="item-anchor">Soft Boomer jackets</a>
+                  </h5>
+                  <p>Stay effortlessly stylish with our Soft Boomer Jacket—lightweight, warm, and built for comfort. 
+                    The perfect blend of cozy and cool for any occasion.</p>
+                  <div class="btn-left">
+                    <a href="shop.html" class="btn-link fs-6 text-uppercase item-anchor text-decoration-none">Discover Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="banner-item image-zoom-effect">
+                <div class="image-holder">
+                  <a href="#">
+                    <img src="images\croptops\totebags.jpg" alt="product" class="img-fluid">
+                  </a>
+                </div>
+                <div class="banner-content py-4">
+                  <h5 class="element-title text-uppercase">
+                    <a href="index.html" class="item-anchor">Crop tops $ Tote bags</a>
+                  </h5>
+                  <p>Effortless style meets everyday function—rock the perfect crop top and tote bag combo for a chic, on-the-go look.</p>
+                  <div class="btn-left">
+                    <a href="shop.html" class="btn-link fs-6 text-uppercase item-anchor text-decoration-none">Discover Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="banner-item image-zoom-effect">
+                <div class="image-holder">
+                  <a href="#">
+                    <img src="images\leatherjacket.jpg" alt="product" class="img-fluid">
+                  </a>
+                </div>
+                <div class="banner-content py-4">
+                  <h5 class="element-title text-uppercase">
+                    <a href="index.html" class="item-anchor">Soft leather jackets</a>
+                  </h5>
+                  <p>Stay effortlessly stylish with our Soft Boomer Jacket—lightweight, warm, and built for comfort. 
+                    The perfect blend of cozy and cool for any occasion.</p>
+                  <div class="btn-left">
+                    <a href="shop.html" class="btn-link fs-6 text-uppercase item-anchor text-decoration-none">Discover Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="banner-item image-zoom-effect">
+                <div class="image-holder">
+                  <a href="#">
+                    <img src="images\classic hats.jpg" alt="product" class="img-fluid">
+                  </a>
+                </div>
+                <div class="banner-content py-4">
+                  <h5 class="element-title text-uppercase">
+                    <a href="index.html" class="item-anchor">Breton Cap</a>
+                  </h5>
+                  <p>Looking for the perfect accessory to complete your look? The Breton cap is a timeless piece that blends sophistication with effortless charm. Originally crafted for sailors, 
+                    this cap has become a must-have fashion statement for trendsetters around the world.</p>
+                  <div class="btn-left">
+                    <a href="shop.html" class="btn-link fs-6 text-uppercase item-anchor text-decoration-none">Discover Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="banner-item image-zoom-effect">
+                <div class="image-holder">
+                  <a href="#">
+                    <img src="images\croptops\totebags.jpg" alt="product" class="img-fluid">
+                  </a>
+                </div>
+                <div class="banner-content py-4">
+                  <h5 class="element-title text-uppercase">
+                    <a href="index.html" class="item-anchor">Crop tops $ Tote bags</a>
+                  </h5>
+                  <p>Effortless style meets everyday function—rock the perfect crop top and tote bag combo for a chic, on-the-go look.</p>
+                  <div class="btn-left">
+                    <a href="shop.html" class="btn-link fs-6 text-uppercase item-anchor text-decoration-none">Discover Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="icon-arrow icon-arrow-left"><svg width="50" height="50" viewBox="0 0 24 24">
+            <use xlink:href="#arrow-left"></use>
+          </svg></div>
+        <div class="icon-arrow icon-arrow-right"><svg width="50" height="50" viewBox="0 0 24 24">
+            <use xlink:href="#arrow-right"></use>
+          </svg></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 text-center" data-aos="fade-in" data-aos-delay="0">
+          <div class="py-5">
+            <svg width="38" height="38" viewBox="0 0 24 24">
+              <use xlink:href="#calendar"></use>
+            </svg>
+            <h4 class="element-title text-capitalize my-3">Book An Appointment</h4>
+            <p>Sellers can book an appointment if they need assistance displaying their items on the app. 
+              Our team is here to help with setting up product listings and ensuring a smooth selling experience..</p>
+          </div>
+        </div>
+        <div class="col-md-3 text-center" data-aos="fade-in" data-aos-delay="300">
+          <div class="py-5">
+            <svg width="38" height="38" viewBox="0 0 24 24">
+              <use xlink:href="#shopping-bag"></use>
+            </svg>
+            <h4 class="element-title text-capitalize my-3">Pick up in store</h4>
+            <p>Customers near the ALU campus have the convenient option to pick up their orders directly at school.</p>
+          </div>
+        </div>
+        <div class="col-md-3 text-center" data-aos="fade-in" data-aos-delay="600">
+          <div class="py-5">
+            <svg width="38" height="38" viewBox="0 0 24 24">
+              <use xlink:href="#gift"></use>
+            </svg>
+            <h4 class="element-title text-capitalize my-3">Special packaging</h4>
+            <p>Every order exported outside Rwanda will be carefully packaged using special protective materials to ensure it arrives in perfect condition.  
+            </p>
+          </div>
+        </div>
+        <div class="col-md-3 text-center" data-aos="fade-in" data-aos-delay="900">
+          <div class="py-5">
+            <svg width="38" height="38" viewBox="0 0 24 24">
+              <use xlink:href="#arrow-cycle"></use>
+            </svg>
+            <h4 class="element-title text-capitalize my-3">free global returns</h4>
+            <p>We stand by the quality of our products and want you to shop with confidence. 
+              If your order arrives damaged, you can return it for free, no matter where you are.</p> </br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="categories overflow-hidden">
+    <div class="container">
+      <div class="open-up" data-aos="zoom-out">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="cat-item image-zoom-effect">
+              <div class="image-holder">
+                <a href="shop.html">
+                  <img src="images\shopformen.jpg" alt="categories" class="product-image img-fluid">
+                </a>
+              </div>
+              <div class="category-content">
+                <div class="product-button">
+                  <a href="shop.html" class="btn btn-common text-uppercase">Shop for men</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="cat-item image-zoom-effect">
+              <div class="image-holder">
+                <a href="shop.html">
+                  <img src="images/shopwomen.jpg" alt="categories" class="product-image img-fluid">
+                </a>
+              </div>
+              <div class="category-content">
+                <div class="product-button">
+                  <a href="shop.html" class="btn btn-common text-uppercase">Shop for women</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="cat-item image-zoom-effect">
+              <div class="image-holder">
+                <a href="shop.html">
+                  <img src="images\cat-large-item3.jpg" alt="categories" class="product-image img-fluid">
+                </a>
+              </div>
+              <div class="category-content">
+                <div class="product-button">
+                  <a href="shop.html" class="btn btn-common text-uppercase">Shop accessories</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="new-arrival" class="new-arrival product-carousel py-5 position-relative overflow-hidden">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
+        <h4 class="text-uppercase">Our New Arrivals</h4>
+        <a href="shop.html" class="btn-link">View All Products</a>
+      </div>
+      <div class="swiper product-swiper open-up" data-aos="zoom-out">
+        <div class="swiper-wrapper d-flex">
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder position-relative">
+                <a href="shop.html">
+                  <img src="images/poloshirt.jpg" alt="categories" class="product-image img-fluid">
+                </a>
+                <a href="index.html" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="element-title text-uppercase fs-5 mt-3">
+                    <a href="index.html">Armed to teeth Polo</a>
+                  </h5>
+                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>RWF9,500.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder position-relative">
+                <a href="shop.html">
+                  <img src="images\SWEATSHIRT.jpg" alt="categories" class="product-image img-fluid">
+                </a>
+                <a href="index.html" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="text-uppercase fs-5 mt-3">
+                    <a href="shop.html">Screenprint Sweatshirt
+                    </a>
+                  </h5>
+                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>RWF5,500.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder position-relative">
+                <a href="shop.html">
+                  <img src="images/BLACKTEE.jpg" alt="categories" class="product-image img-fluid">
+                </a>
+                <a href="index.html" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="text-uppercase fs-5 mt-3">
+                    <a href="index.html">Cotton Maison Margela shirt
+                    </a>
+                  </h5>
+                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>RWF6,500.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder position-relative">
+                <a href="shop.html">
+                  <img src="images\totebag.jpg" alt="categories" class="product-image img-fluid">
+                </a>
+                <a href="index.html" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="text-uppercase fs-5 mt-3">
+                    <a href="shop.html">Totebag</a>
+                  </h5>
+                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>RWF5,000.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder position-relative">
+                <a href="shop.html">
+                  <img src="images\SWEATSHIRT.jpg" alt="categories" class="product-image img-fluid">
+                </a>
+                <a href="index.html" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="text-uppercase fs-5 mt-3">
+                    <a href="shop.html">Screenprint Sweatshirt
+                      size L
+                    </a>
+                  </h5>
+                  <a href="#" class="text-decoration-none" data-after="Add to cart"><span>RWF7,000.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="icon-arrow icon-arrow-left"><svg width="50" height="50" viewBox="0 0 24 24">
+          <use xlink:href="#arrow-left"></use>
+        </svg></div>
+      <div class="icon-arrow icon-arrow-right"><svg width="50" height="50" viewBox="0 0 24 24">
+          <use xlink:href="#arrow-right"></use>
+        </svg></div>
+    </div>
+  </section>
+
+  <section id="collection" class="collection bg-light position-relative py-5">
+    <div class="container">
+      <div class="row">
+        <div class="title-xlarge text-uppercase txt-fx domino">Collection</div>
+        <div class="collection-item d-flex flex-wrap my-5">
+          <div class="col-md-6 column-container">
+            <div class="image-holder">
+              <img src="images\summercollection.jpg" alt="collection" class="product-image img-fluid">
+            </div>
+          </div>
+          <div class="col-md-6 column-container bg-white">
+            <div class="collection-content p-5 m-0 m-md-5">
+              <h3 class="element-title text-uppercase">Classic Summer collection</h3>
+              <p>"You say you love rain, but you open your umbrella. You say you love the sun, but you find a shadowed spot. You say you love the wind, but close your windows… This is why I am afraid when you say you love me.  
+
+                But summer outfits? They never lie. They embrace the sun without hesitation, soak in the breeze with open arms, and dance in the golden glow without seeking shade. 
+                A flowy sundress, linen shirts, or stylish shorts don’t hide from the season—they celebrate it. Maybe love should be like that too—bold, free, and unapologetically radiant." 🌞✨.</p>
+              <a href="#" class="btn btn-dark text-uppercase mt-3">Shop Collection</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="testimonials py-5 bg-light">
+    <div class="section-header text-center mt-5">
+      <h3 class="section-title">WE LOVE GOOD COMPLIMENT</h3>
+    </div>
+    <div class="swiper testimonial-swiper overflow-hidden my-5">
+      <div class="swiper-wrapper d-flex">
+        <div class="swiper-slide">
+          <div class="testimonial-item text-center">
+            <blockquote>
+              <p>“More than expected crazy soft, flexible and best fitted white simple denim shirt.”</p>
+              <div class="review-title text-uppercase">casual way</div>
+            </blockquote>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="testimonial-item text-center">
+            <blockquote>
+              <p>“Best fitted white denim shirt more than expected crazy soft, flexible</p>
+              <div class="review-title text-uppercase">uptop</div>
+            </blockquote>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="testimonial-item text-center">
+            <blockquote>
+              <p>“Best fitted white denim shirt more white denim than expected flexible crazy soft.”</p>
+              <div class="review-title text-uppercase">Denim craze</div>
+            </blockquote>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="testimonial-item text-center">
+            <blockquote>
+              <p>“Best fitted white denim shirt more than expected crazy soft, flexible</p>
+              <div class="review-title text-uppercase">uptop</div>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-swiper-pagination d-flex justify-content-center mb-5"></div>
+  </section>
+
+  <section id="related-products" class="related-products product-carousel py-5 position-relative overflow-hidden">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-between align-items-center mt-5 mb-3">
+        <h4 class="text-uppercase">You May Also Like</h4>
+        <a href="shop.html" class="btn-link">View All Products</a>
+      </div>
+      <div class="swiper product-swiper open-up" data-aos="zoom-out">
+        <div class="swiper-wrapper d-flex">
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder">
+                <a href="shop.html">
+                  <img src="images\Cross-pendert.jpg" alt="product" class="product-image img-fluid">
+                </a>
+                <a href="index.html" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="text-uppercase fs-5 mt-3">
+                    <a href="index.html">Rose gold cross pendant</a>
+                  </h5>
+                  <a href="shop.html" class="text-decoration-none" data-after="Add to cart"><span>RWF9,500.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder">
+                <a href="shop.html">
+                  <img src="images\wrist watches.jpg" alt="product" class="product-image img-fluid">
+                </a>
+                <a href="index.html" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="text-uppercase fs-5 mt-3">
+                    <a href="index.html">Wrist Watch</a>
+                  </h5>
+                  <a href="shop.html" class="text-decoration-none" data-after="Add to cart"><span>RWF25,000.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder">
+                <a href="shop.html">
+                  <img src="images/shoes.jpg" alt="product" class="product-image img-fluid">
+                </a>
+                <a href="index.html" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="text-uppercase fs-5 mt-3">
+                    <a href="index.html">Airmax 95s Neon</a>
+                  </h5>
+                  <a href="shop.html" class="text-decoration-none" data-after="Add to cart"><span>RWF35,000.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder">
+                <a href="shop.html">
+                  <img src="images\Jersey.jpg" alt="product" class="product-image img-fluid">
+                </a>
+                <a href="index.html" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="text-uppercase fs-5 mt-3">
+                    <a href="index.html">Inter Milan Jersey
+                      Size L
+                    </a>
+                  </h5>
+                  <a href="shop.html" class="text-decoration-none" data-after="Add to cart"><span>RWF35,000.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="product-item image-zoom-effect link-effect">
+              <div class="image-holder">
+                <a href="shop.html">
+                  <img src="images\sweater.jpg" alt="product" class="product-image img-fluid">
+                </a>
+                <a href="index.html" class="btn-icon btn-wishlist">
+                  <svg width="24" height="24" viewBox="0 0 24 24">
+                    <use xlink:href="#heart"></use>
+                  </svg>
+                </a>
+                <div class="product-content">
+                  <h5 class="text-uppercase fs-5 mt-3">
+                    <a href="index.html">Handmade crop sweater</a>
+                  </h5>
+                  <a href="shop.html" class="text-decoration-none" data-after="Add to cart"><span>RWF70,000.00</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <div class="icon-arrow icon-arrow-left"><svg width="50" height="50" viewBox="0 0 24 24">
+          <use xlink:href="#arrow-left"></use>
+        </svg></div>
+      <div class="icon-arrow icon-arrow-right"><svg width="50" height="50" viewBox="0 0 24 24">
+          <use xlink:href="#arrow-right"></use>
+        </svg></div>
+    </div>
+  </section>
+
+  
+<section class="newsletter bg-light" style="background: url(images/pattern-bg.png) no-repeat;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 py-5 my-5">
+        <div class="subscribe-header text-center pb-3">
+          <h3 class="section-title text-uppercase">Sign Up </h3>
+        </div>
+        <form id="form" class="d-flex flex-wrap gap-2">
+          <input type="text" name="email" placeholder="Your Email Address" class="form-control form-control-lg">
+
+          <!-- Flex container for buttons -->
+          <div class="d-flex gap-2 w-100 justify-content-center">
+            <a class="btn btn-dark btn-lg text-uppercase flex-fill" href="signup.html">Sign Up</a>
+            <a class="btn btn-outline-dark btn-lg text-uppercase flex-fill" href="login.html">Login</a>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section class="instagram position-relative">
+    <div class="d-flex justify-content-center w-100 position-absolute bottom-0 z-1">
+      <a href="https://www.instagram.com/alu_marketplace?igsh=cGpiNDJtcm9oYnJu" class="btn btn-dark px-5">Follow us on Instagram</a>
+    </div>
+    <div class="row g-0">
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="insta-item">
+          <a href="https://www.instagram.com/alu_marketplace?igsh=cGpiNDJtcm9oYnJu" target="_blank">
+            <img src="images/instagram post.jpg" alt="instagram" class="insta-image img-fluid">
+          </a>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="insta-item">
+          <a href="https://www.instagram.com/alu_marketplace?igsh=cGpiNDJtcm9oYnJu" target="_blank">
+            <img src="images\Instagram photo 2.jpg" alt="instagram" class="insta-image img-fluid">
+          </a>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="insta-item">
+          <a href="https://www.instagram.com/alu_marketplace?igsh=cGpiNDJtcm9oYnJu" target="_blank">
+            <img src="images\Instagram-image3.jpg" alt="instagram" class="insta-image img-fluid">
+          </a>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="insta-item">
+          <a href="https://www.instagram.com/alu_marketplace?igsh=cGpiNDJtcm9oYnJu" target="_blank">
+            <img src="images/instagram-image5.jpg" alt="instagram" class="insta-image img-fluid">
+          </a>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="insta-item">
+          <a href="https://www.instagram.com/alu_marketplace?igsh=cGpiNDJtcm9oYnJu" target="_blank">
+            <img src="images\Instagram-image4.jpg" alt="instagram" class="insta-image img-fluid">
+          </a>
+        </div>
+      </div>
+      <div class="col-6 col-sm-4 col-md-2">
+        <div class="insta-item">
+          <a href="https://www.instagram.com/alu_marketplace?igsh=cGpiNDJtcm9oYnJu" target="_blank">
+            <img src="images\Instagram-image7.jpg" alt="instagram" class="insta-image img-fluid">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer" class="mt-5">
+    <div class="container">
+      <div class="row d-flex flex-wrap justify-content-between py-5">
+        <div class="col-md-3 col-sm-6">
+          <div class="footer-menu footer-menu-001">
+            <div class="footer-intro mb-4">
+              <a href="index.html">
+                <img src="images/alu-logo.png" alt="logo">
+              </a>
+            </div>
+            <p>Join our online store to explore a diverse range of jewelry, clothing, and art crafted by talented students, 
+              transforming your shopping experience while supporting fellow creatives on campus.</p>
+            <div class="social-links">
+              <ul class="list-unstyled d-flex flex-wrap gap-3">
+                <li>
+                  <a href="#" class="text-secondary">
+                    <svg width="24" height="24" viewBox="0 0 24 24">
+                      <use xlink:href="#facebook"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-secondary">
+                    <svg width="24" height="24" viewBox="0 0 24 24">
+                      <use xlink:href="#twitter"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-secondary">
+                    <svg width="24" height="24" viewBox="0 0 24 24">
+                      <use xlink:href="#youtube"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-secondary">
+                    <svg width="24" height="24" viewBox="0 0 24 24">
+                      <use xlink:href="#pinterest"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.instagram.com/alu_marketplace?igsh=cGpiNDJtcm9oYnJu" target="_blank">
+                    <svg width="24" height="24" viewBox="0 0 24 24">
+                      <use xlink:href="#instagram"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="footer-menu footer-menu-002">
+            <h5 class="widget-title text-uppercase mb-4">Quick Links</h5>
+            <ul class="menu-list list-unstyled text-uppercase border-animation-left fs-6">
+              <li class="menu-item">
+                <a href="index.html" class="item-anchor">Home</a>
+              </li>
+              <li class="menu-item">
+                <a href="index.html" class="item-anchor">About</a>
+              </li>
+              <li class="menu-item">
+                <a href="blog.html" class="item-anchor">Services</a>
+              </li>
+              <li class="menu-item">
+                <a href="#related-products" class="item-anchor">You may also like</a>
+              </li>
+              <li class="menu-item">
+                <a href="#footer" class="item-anchor">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="footer-menu footer-menu-003">
+            <h5 class="widget-title text-uppercase mb-4">Help & Info</h5>
+            <ul class="menu-list list-unstyled text-uppercase border-animation-left fs-6">
+              <li class="menu-item">
+                <a href="#" class="item-anchor">Shipping + Delivery</a>
+              </li>
+              <li class="menu-item">
+                <a href="#footer" class="item-anchor">Contact Us</a>
+              </li>
+              <li class="menu-item">
+                <a href="#" class="item-anchor">Find us easy</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="footer-menu footer-menu-004 border-animation-left">
+            <h5 class="widget-title text-uppercase mb-4">Contact Us</h5>
+            <p>Do you have any questions or suggestions? <a href="mailto:contact@yourcompany.com"
+                class="item-anchor">Alumarketplace.com</a></p>
+            <p>Do you need support? Give us a call. <a href="tel:+250794096359" class="item-anchor">+2507940963
+              59</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-top py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 d-flex flex-wrap">
+            <div class="shipping">
+              <span>We ship with:</span>
+              <img src="images/dhl-logo.png" alt="icon">
+            </div>
+            <div class="payment-option">
+              <span>Payment Option:</span>
+              <img src="images/visa-card.png" alt="card">
+              <img src="images/paypal-card.png" alt="card">
+              <img src="images/master-card.png" alt="card">
+            </div>
+          </div>
+          <div class="col-md-6 text-end">
+            <p>© Copyright 2025 ALU Marketplace. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/SmoothScroll.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script src="js/script.min.js"></script>
+
+  <script src="/ALU-Marketplace/js/image-sizing.js"></script>
+<script src="/ALU-Marketplace/js/landing.js"></script>
+</body>
+
+</html>
+

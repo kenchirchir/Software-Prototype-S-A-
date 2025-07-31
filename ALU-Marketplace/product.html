@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ALU MARKETPLACE - Product Details</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="author" content="ALU Marketplace">
+  <meta name="keywords" content="ecommerce,fashion,store,student marketplace">
+  <meta name="description" content="ALU Marketplace - Student-run marketplace for the ALU community">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/vendor.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .product-image-main {
+      height: 500px;
+      object-fit: cover;
+      width: 100%;
+    }
+    .product-image-thumbnail {
+      height: 100px;
+      object-fit: cover;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+    .product-image-thumbnail:hover,
+    .product-image-thumbnail.active {
+      opacity: 1;
+      border: 2px solid #002e6d;
+    }
+    .quantity-selector {
+      width: 120px;
+    }
+    .size-selector input[type="radio"] {
+      display: none;
+    }
+    .size-selector label {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      border: 1px solid #ddd;
+      margin-right: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .size-selector input[type="radio"]:checked + label {
+      background-color: #002e6d;
+      color: white;
+      border-color: #002e6d;
+    }
+    .color-selector input[type="radio"] {
+      display: none;
+    }
+    .color-selector label {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .color-selector input[type="radio"]:checked + label {
+      transform: scale(1.2);
+      box-shadow: 0 0 0 2px white, 0 0 0 4px #002e6d;
+    }
+    .related-product-image {
+      height: 200px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg text-uppercase fs-6 p-3 border-bottom align-items-center" style="background-color: #002e6d;">
+
+    <div class="container-fluid">
+      <div class="row justify-content-between align-items-center w-100">
+
+        <div class="col-auto">
+          <a class="navbar-brand text-white" href="index.html">
+            <img src="images/alu-logo.png" alt="Logo" width="75" height="60">
+          </a>
+        </div>
+
+        <div class="col-auto">
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+            </div>
+
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 gap-1 gap-md-5 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active text-white" href=""index.html>Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-white" href="#" id="dropdownShop" data-bs-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Shop</a>
+                  <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownShop">
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Accessories </a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Mens Wear </a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Footwear</a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Jewelry </a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Handbags </a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Hats/Beanie</a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Order Tracking </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-white" href="#" id="dropdownBlog" data-bs-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Blog</a>
+                  <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownBlog">
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Blog Classic </a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Blog Grid with Sidebar </a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Blog Grid Four Column </a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Blog No Sidebar </a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Blog Right Sidebar </a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Single Post </a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Single Post No Sidebar </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-white" href="#" id="dropdownPages" data-bs-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Trending</a>
+                  <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownPages">
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Explore(New!) </a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Coming soon</a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Wishlist </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-white" href="#" id="dropdownpages" data-bs-toggle="dropdown"
+                     aria-haspopup="true" aria-expanded="false">Contact</a>
+                  <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownPages">
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor"> FAQs </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3 col-lg-auto">
+          <ul class="list-unstyled d-flex m-0">
+            <li class="d-none d-lg-block">
+              <a href="index.html" class="text-uppercase mx-3 text-white">Wishlist <span class="wishlist-count">(0)</span>
+              </a>
+            </li>
+            <li class="d-none d-lg-block">
+              <a href="index.html" class="text-uppercase mx-3 text-white" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
+                aria-controls="offcanvasCart">Cart <span class="cart-count">(0)</span>
+              </a>
+            </li>
+            <li class="d-lg-none">
+              <a href="#" class="mx-2">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                  <use xlink:href="#heart"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="d-lg-none">
+              <a href="#" class="mx-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
+                aria-controls="offcanvasCart">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                  <use xlink:href="#cart"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="search-box mx-2">
+              <a href="#search" class="search-button text-white">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                  <use xlink:href="#search"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- Product Details -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-5">
+        <!-- Product Images -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            <img src="images/poloshirt.jpg" class="product-image-main rounded-3" alt="Armed to Teeth Polo" id="mainImage">
+          </div>
+          <div class="row g-2">
+            <div class="col-3">
+              <img src="images/poloshirt.jpg" class="product-image-thumbnail w-100 rounded-2 active" alt="Armed to Teeth Polo - Front" onclick="changeImage(this, 'images/poloshirt.jpg')">
+            </div>
+            <div class="col-3">
+              <img src="images/SWEATSHIRT.jpg" class="product-image-thumbnail w-100 rounded-2" alt="Armed to Teeth Polo - Back" onclick="changeImage(this, 'images/SWEATSHIRT.jpg')">
+            </div>
+            <div class="col-3">
+              <img src="images/BLACKTEE.jpg" class="product-image-thumbnail w-100 rounded-2" alt="Armed to Teeth Polo - Detail" onclick="changeImage(this, 'images/BLACKTEE.jpg')">
+            </div>
+            <div class="col-3">
+              <img src="images/totebag.jpg" class="product-image-thumbnail w-100 rounded-2" alt="Armed to Teeth Polo - Styling" onclick="changeImage(this, 'images/totebag.jpg')">
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="col-md-6">
+          <h1 class="mb-2">Armed to Teeth Polo</h1>
+          <div class="d-flex align-items-center mb-3">
+            <div class="me-3">
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-fill text-warning"></i>
+              <i class="bi bi-star-half text-warning"></i>
+              <span class="ms-1">4.5</span>
+            </div>
+            <span class="text-muted">(12 reviews)</span>
+          </div>
+          <h2 class="text-primary fw-bold mb-4">RWF 9,500</h2>
+
+          <p class="mb-4">This premium polo shirt is handcrafted by ALU students using high-quality cotton. The unique "Armed to Teeth" design represents strength and resilience, core values of our ALU community. Perfect for casual wear or ALU events.</p>
+
+          <div class="mb-4">
+            <h5>Size</h5>
+            <div class="size-selector">
+              <input type="radio" name="size" id="size-s" value="S">
+              <label for="size-s">S</label>
+
+              <input type="radio" name="size" id="size-m" value="M" checked>
+              <label for="size-m">M</label>
+
+              <input type="radio" name="size" id="size-l" value="L">
+              <label for="size-l">L</label>
+
+              <input type="radio" name="size" id="size-xl" value="XL">
+              <label for="size-xl">XL</label>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h5>Color</h5>
+            <div class="color-selector">
+              <input type="radio" name="color" id="color-blue" value="blue" checked>
+              <label for="color-blue" style="background-color: #1a237e;"></label>
+
+              <input type="radio" name="color" id="color-black" value="black">
+              <label for="color-black" style="background-color: #000000;"></label>
+
+              <input type="radio" name="color" id="color-red" value="red">
+              <label for="color-red" style="background-color: #b71c1c;"></label>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h5>Quantity</h5>
+            <div class="input-group quantity-selector">
+              <button class="btn btn-outline-secondary" type="button" id="decreaseQuantity">-</button>
+              <input type="text" class="form-control text-center" value="1" id="quantity">
+              <button class="btn btn-outline-secondary" type="button" id="increaseQuantity">+</button>
+            </div>
+          </div>
+
+          <div class="d-grid gap-2 d-md-flex mb-4">
+            <a href="add-to-cart.html" class="btn btn-primary py-2 px-4">Add to Cart</a>
+            <button class="btn btn-outline-secondary py-2 px-4">Add to Wishlist</button>
+          </div>
+
+          <div class="border-top pt-4">
+            <div class="row">
+              <div class="col-6">
+                <p class="mb-1"><strong>SKU:</strong> ALU-POLO-001</p>
+                <p class="mb-1"><strong>Category:</strong> Clothing</p>
+              </div>
+              <div class="col-6">
+                <p class="mb-1"><strong>Seller:</strong> ALU Fashion Club</p>
+                <p class="mb-1"><strong>Tags:</strong> Polo, Fashion, ALU</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Details Tabs -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <ul class="nav nav-tabs mb-4" id="productTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Description</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button" role="tab" aria-controls="details" aria-selected="false">Additional Details</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Reviews (12)</button>
+        </li>
+      </ul>
+
+      <div class="tab-content p-4 bg-white rounded-3" id="productTabsContent">
+        <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+          <h4>Product Description</h4>
+          <p>The Armed to Teeth Polo is a premium quality shirt designed and crafted by ALU students. Made from 100% organic cotton, this polo offers both comfort and style for everyday wear.</p>
+          <p>The unique "Armed to Teeth" embroidery on the chest represents strength and resilience, core values of our ALU community. Each polo is carefully made with attention to detail, ensuring high quality and durability.</p>
+          <p>Features:</p>
+          <ul>
+            <li>100% organic cotton material</li>
+            <li>Comfortable fit with ribbed collar and cuffs</li>
+            <li>Embroidered ALU logo on the sleeve</li>
+            <li>Machine washable</li>
+            <li>Available in multiple colors and sizes</li>
+          </ul>
+          <p>Perfect for casual wear, ALU events, or as a gift for fellow students and alumni.</p>
+        </div>
+
+        <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
+          <h4>Additional Details</h4>
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th scope="row" style="width: 30%">Material</th>
+                <td>100% Organic Cotton</td>
+              </tr>
+              <tr>
+                <th scope="row">Weight</th>
+                <td>220 gsm</td>
+              </tr>
+              <tr>
+                <th scope="row">Care Instructions</th>
+                <td>Machine wash cold, tumble dry low</td>
+              </tr>
+              <tr>
+                <th scope="row">Country of Origin</th>
+                <td>Rwanda</td>
+              </tr>
+              <tr>
+                <th scope="row">Sizing</th>
+                <td>Standard fit, see size chart for details</td>
+              </tr>
+              <tr>
+                <th scope="row">Sustainability</th>
+                <td>Made with eco-friendly materials and processes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+          <h4>Customer Reviews</h4>
+          <div class="mb-4">
+            <div class="d-flex mb-3">
+              <div class="me-3">
+                <img src="/placeholder.svg?height=50&width=50" class="rounded-circle" alt="User">
+              </div>
+              <div>
+                <h5 class="mb-1">Sarah K.</h5>
+                <div class="mb-1">
+                  <i class="bi bi-star-fill text-warning"></i>
+                  <i class="bi bi-star-fill text-warning"></i>
+                  <i class="bi bi-star-fill text-warning"></i>
+                  <i class="bi bi-star-fill text-warning"></i>
+                  <i class="bi bi-star-fill text-warning"></i>
+                </div>
+                <p class="text-muted mb-1">Posted on March 15, 2025</p>
+                <p>Great quality polo! The material is soft and comfortable, and the design is unique. I've received many compliments when wearing it on campus.</p>
+              </div>
+            </div>
+
+            <div class="d-flex mb-3">
+              <div class="me-3">
+                <img src="/placeholder.svg?height=50&width=50" class="rounded-circle" alt="User">
+              </div>
+              <div>
+                <h5 class="mb-1">Michael T.</h5>
+                <div class="mb-1">
+                  <i class="bi bi-star-fill text-warning"></i>
+                  <i class="bi bi-star-fill text-warning"></i>
+                  <i class="bi bi-star-fill text-warning"></i>
+                  <i class="bi bi-star-fill text-warning"></i>
+                  <i class="bi bi-star text-warning"></i>
+                </div>
+                <p class="text-muted mb-1">Posted on March 10, 2025</p>
+                <p>The polo fits well and looks great. The only reason for 4 stars instead of 5 is that it shrunk slightly after washing. Still very happy with my purchase!</p>
+              </div>
+            </div>
+
+            <div class="d-flex">
+              <div class="me-3">
+                <img src="/placeholder.svg?height=50&width=50" class="rounded-circle" alt="User">
+              </div>
+              <div>
+                <h5 class="mb-1">Amina J.</h5>
+                <div class="mb-1">
+                  <i class="bi bi-star-fill text-warning"></i>
+                  <i class="bi bi-star-fill text-warning"></i>
+                  <i class="bi bi-star-fill text-warning"></i>
+                  <i class="bi bi-star-fill text-warning"></i>
+                  <i class="bi bi-star-half text-warning"></i>
+                </div>
+                <p class="text-muted mb-1">Posted on March 5, 2025</p>
+                <p>Love supporting student-made products! The quality is impressive, and I appreciate the sustainable materials used. Would definitely buy again.</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="btn btn-outline-primary">View All Reviews</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Products -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="mb-4">You May Also Like</h2>
+      <div class="row g-4">
+        <!-- Related Product 1 -->
+        <div class="col-6 col-md-3">
+          <a href="index.html" class="text-decoration-none text-dark">
+            <div class="card h-100 border-0">
+              <img src="images/SWEATSHIRT.jpg" class="card-img-top related-product-image" alt="Screenprint Sweatshirt">
+              <div class="card-body px-0">
+                <h5 class="card-title">Screenprint Sweatshirt</h5>
+                <p class="card-text text-primary fw-bold">RWF 5,500</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Related Product 2 -->
+        <div class="col-6 col-md-3">
+          <a href="product.html" class="text-decoration-none text-dark">
+            <div class="card h-100 border-0">
+              <img src="images/BLACKTEE.jpg" class="card-img-top related-product-image" alt="Cotton Maison Margela Shirt">
+              <div class="card-body px-0">
+                <h5 class="card-title">Cotton Maison Margela Shirt</h5>
+                <p class="card-text text-primary fw-bold">RWF 6,500</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Related Product 3 -->
+        <div class="col-6 col-md-3">
+          <a href="product.html" class="text-decoration-none text-dark">
+            <div class="card h-100 border-0">
+              <img src="images/totebag.jpg" class="card-img-top related-product-image" alt="ALU Tote Bag">
+              <div class="card-body px-0">
+                <h5 class="card-title">ALU Tote Bag</h5>
+                <p class="card-text text-primary fw-bold">RWF 5,000</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Related Product 4 -->
+        <div class="col-6 col-md-3">
+          <a href="product.html" class="text-decoration-none text-dark">
+            <div class="card h-100 border-0">
+              <img src="images/classic hats.jpg" class="card-img-top related-product-image" alt="Classic ALU Hat">
+              <div class="card-body px-0">
+                <h5 class="card-title">Classic ALU Hat</h5>
+                <p class="card-text text-primary fw-bold">RWF 4,500</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h5>ALU Marketplace</h5>
+          <p class="mb-3">A platform for ALU students to buy and sell unique handmade items, fostering creativity and community within our vibrant student body.</p>
+        </div>
+        <div class="col-lg-2">
+          <h5>Shop</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-decoration-none text-white-50">All Products</a></li>
+            <li><a href="#" class="text-decoration-none text-white-50">New Arrivals</a></li>
+            <li><a href="#" class="text-decoration-none text-white-50">Featured</a></li>
+            <li><a href="#" class="text-decoration-none text-white-50">Sale</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h5>About</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-decoration-none text-white-50">Our Story</a></li>
+            <li><a href="#" class="text-decoration-none text-white-50">Sell on ALU</a></li>
+            <li><a href="#" class="text-decoration-none text-white-50">FAQ</a></li>
+            <li><a href="#" class="text-decoration-none text-white-50">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h5>Stay Connected</h5>
+          <p>Subscribe to our newsletter for updates on new products and events.</p>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Your email" aria-label="Your email">
+            <button class="btn btn-primary" type="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4 pt-4 border-top">
+        <div class="col-md-6">
+          <p class="mb-0">&copy; 2025 ALU Marketplace. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="#" class="text-white-50 me-3">Privacy Policy</a>
+          <a href="#" class="text-white-50 me-3">Terms of Service</a>
+          <a href="#" class="text-white-50">Shipping Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+
+  <!-- Custom JS -->
+  <script>
+    // Image gallery functionality
+    function changeImage(element, src) {
+      document.getElementById('mainImage').src = src;
+
+      // Remove active class from all thumbnails
+      const thumbnails = document.querySelectorAll('.product-image-thumbnail');
+      thumbnails.forEach(thumb => {
+        thumb.classList.remove('active');
+      });
+
+      // Add active class to clicked thumbnail
+      element.classList.add('active');
+    }
+
+    // Quantity selector functionality
+    document.getElementById('decreaseQuantity').addEventListener('click', function() {
+      const quantityInput = document.getElementById('quantity');
+      let quantity = parseInt(quantityInput.value);
+      if (quantity > 1) {
+        quantityInput.value = quantity - 1;
+      }
+    });
+
+    document.getElementById('increaseQuantity').addEventListener('click', function() {
+      const quantityInput = document.getElementById('quantity');
+      let quantity = parseInt(quantityInput.value);
+      quantityInput.value = quantity + 1;
+    });
+  </script>
+  <script src="/ALU-Marketplace/js/view-product.js"></script>
+</body>
+</html>

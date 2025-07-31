@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ALU MARKETPLACE - Shop</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="author" content="ALU Marketplace">
+  <meta name="keywords" content="ecommerce,fashion,store,student marketplace">
+  <meta name="description" content="ALU Marketplace - Student-run marketplace for the ALU community">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/vendor.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .product-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .product-image {
+      height: 250px;
+      object-fit: cover;
+      width: 100%;
+    }
+    .category-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+    }
+  </style>
+</head>
+
+<body>
+
+<!--SVG's-->
+
+
+  <div class="search-popup">
+    <div class="search-popup-container">
+
+      <form role="search" method="get" class="form-group" action="">
+        <input type="search" id="search-form" class="form-control border-0 border-bottom"
+          placeholder="Type and press enter" value="" name="s" />
+        <button type="submit" class="search-submit border-0 position-absolute bg-white"
+          style="top: 15px;right: 15px;"><svg class="search" width="24" height="24">
+            <use xlink:href="#search"></use>
+          </svg></button>
+      </form>
+
+      <h5 class="cat-list-title">Browse Categories</h5>
+
+      <ul class="cat-list">
+        <li class="cat-list-item">
+          <a href="#" title="Jackets">Jackets</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="T-shirts">T-shirts</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Handbags">Handbags</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Accessories">Accessories</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Cosmetics">Cosmetics</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Dresses">Dresses</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Jumpsuits">Jumpsuits</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+
+  <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="My Cart">
+    <div class="offcanvas-header justify-content-center">
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Your cart</span>
+          <span class="badge bg-primary rounded-pill">3</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Growers cider</h6>
+              <small class="text-body-secondary">Brief description</small>
+            </div>
+            <span class="text-body-secondary">$12</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Fresh grapes</h6>
+              <small class="text-body-secondary">Brief description</small>
+            </div>
+            <span class="text-body-secondary">$8</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">Heinz tomato ketchup</h6>
+              <small class="text-body-secondary">Brief description</small>
+            </div>
+            <span class="text-body-secondary">$5</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (USD)</span>
+            <strong>$20</strong>
+          </li>
+        </ul>
+
+        <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg text-uppercase fs-6 p-3 border-bottom align-items-center" style="background-color: #002e6d;">
+
+    <div class="container-fluid">
+      <div class="row justify-content-between align-items-center w-100">
+
+        <div class="col-auto">
+          <a class="navbar-brand text-white" href="index.html">
+            <img src="images/alu-logo.png" alt="Logo" width="75" height="60">
+          </a>
+        </div>
+
+        <div class="col-auto">
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+            </div>
+
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 gap-1 gap-md-5 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active text-white" href="index.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-white" href="#" id="dropdownShop" data-bs-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Shop</a>
+                  <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownShop">
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Accessories </a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Mens Wear </a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Footwear</a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Jewelry </a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Handbags </a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Hats/Beanie</a>
+                    </li>
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor">Order Tracking </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-white" href="#" id="dropdownPages" data-bs-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Trending</a>
+                  <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownPages">
+                    <li>
+                      <a href="index.html#new-arrival" class="dropdown-item item-anchor">Explore(New!) </a>
+                    </li>
+                    <li>
+                      <a href="index.html#collection" class="dropdown-item item-anchor">Coming soon</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link active text-white" href="index.html#footer">Contact</a>
+                  <!-- <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownPages">
+                    <li>
+                      <a href="index.html" class="dropdown-item item-anchor"> FAQs </a>
+                    </li>
+                  </ul> -->
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3 col-lg-auto">
+          <ul class="list-unstyled d-flex m-0">
+            <li class="d-none d-lg-block">
+            </li>
+            <li class="d-none d-lg-block">
+              <a href="index.html" class="text-uppercase mx-3 text-white" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
+                aria-controls="offcanvasCart">Cart <span class="cart-count">(0)</span>
+              </a>
+            </li>
+            <li class="d-lg-none">
+              <a href="#" class="mx-2">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                  <use xlink:href="#heart"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="d-lg-none">
+              <a href="#" class="mx-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
+                aria-controls="offcanvasCart">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                  <use xlink:href="#cart"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="search-box mx-2">
+              <a href="#search" class="search-button text-white">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                  <use xlink:href="#search"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- Shop Header -->
+  <section class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h1 class="display-4 mb-4">Shop All Products</h1>
+          <p class="lead mb-0">Browse our collection of student-made products</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter and Sort Section -->
+  <section class="py-4 border-bottom">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="d-flex">
+            <div class="dropdown me-3">
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="categoryDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Categories
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
+                <li><a class="dropdown-item" href="#">All Categories</a></li>
+                <li><a class="dropdown-item" href="#">Clothing</a></li>
+                <li><a class="dropdown-item" href="#">Accessories</a></li>
+                <li><a class="dropdown-item" href="#">Art</a></li>
+                <li><a class="dropdown-item" href="#">Crafts</a></li>
+              </ul>
+            </div>
+            <div class="dropdown">
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="priceDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Price Range
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="priceDropdown">
+                <li><a class="dropdown-item" href="#">All Prices</a></li>
+                <li><a class="dropdown-item" href="#">Under RWF 5,000</a></li>
+                <li><a class="dropdown-item" href="#">RWF 5,000 - 10,000</a></li>
+                <li><a class="dropdown-item" href="#">Over RWF 10,000</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 text-md-end mt-3 mt-md-0">
+          <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+              Sort By: Featured
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="sortDropdown">
+              <li><a class="dropdown-item" href="#">Featured</a></li>
+              <li><a class="dropdown-item" href="#">Price: Low to High</a></li>
+              <li><a class="dropdown-item" href="#">Price: High to Low</a></li>
+              <li><a class="dropdown-item" href="#">Newest</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Grid -->
+  <section class="py-5">
+    <div class="container">
+      <div id="product-container" class="row g-4">
+        <!-- Product 1 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <a href="product.html" class="text-decoration-none text-dark">
+            <div class="card product-card border-0 rounded-0 h-100">
+              <span class="badge bg-primary category-badge">New</span>
+              <img src="images/poloshirt.jpg" class="card-img-top product-image rounded-0" alt="Armed to Teeth Polo">
+              <div class="card-body">
+                <h5 class="card-title">Armed to Teeth Polo</h5>
+                <p class="card-text text-primary fw-bold">RWF 9,500</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <a href="product.html" class="text-decoration-none text-dark">
+            <div class="card product-card border-0 rounded-0 h-100">
+              <img src="images/SWEATSHIRT.jpg" class="card-img-top product-image rounded-0" alt="Screenprint Sweatshirt">
+              <div class="card-body">
+                <h5 class="card-title">Screenprint Sweatshirt</h5>
+                <p class="card-text text-primary fw-bold">RWF 5,500</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <a href="product.html" class="text-decoration-none text-dark">
+            <div class="card product-card border-0 rounded-0 h-100">
+              <span class="badge bg-danger category-badge">Sale</span>
+              <img src="images/BLACKTEE.jpg" class="card-img-top product-image rounded-0" alt="Cotton Maison Margela Shirt">
+              <div class="card-body">
+                <h5 class="card-title">Cotton Maison Margela Shirt</h5>
+                <p class="card-text text-primary fw-bold">RWF 6,500</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <a href="product.html" class="text-decoration-none text-dark">
+            <div class="card product-card border-0 rounded-0 h-100">
+              <img src="images/totebag.jpg" class="card-img-top product-image rounded-0" alt="Tote Bag">
+              <div class="card-body">
+                <h5 class="card-title">ALU Tote Bag</h5>
+                <p class="card-text text-primary fw-bold">RWF 5,000</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <a href="product.html" class="text-decoration-none text-dark">
+            <div class="card product-card border-0 rounded-0 h-100">
+              <img src="images/leatherjacket.jpg" class="card-img-top product-image rounded-0" alt="Leather Jacket">
+              <div class="card-body">
+                <h5 class="card-title">Soft Leather Jacket</h5>
+                <p class="card-text text-primary fw-bold">RWF 15,000</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <a href="product.html" class="text-decoration-none text-dark">
+            <div class="card product-card border-0 rounded-0 h-100">
+              <span class="badge bg-success category-badge">Eco</span>
+              <img src="images/classic hats.jpg" class="card-img-top product-image rounded-0" alt="Classic Hat">
+              <div class="card-body">
+                <h5 class="card-title">Classic ALU Hat</h5>
+                <p class="card-text text-primary fw-bold">RWF 4,500</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <a href="product.html" class="text-decoration-none text-dark">
+            <div class="card product-card border-0 rounded-0 h-100">
+              <img src="images/sweater.jpg" class="card-img-top product-image rounded-0" alt="Sweater">
+              <div class="card-body">
+                <h5 class="card-title">ALU Knit Sweater</h5>
+                <p class="card-text text-primary fw-bold">RWF 8,000</p>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <a href="product.html" class="text-decoration-none text-dark">
+            <div class="card product-card border-0 rounded-0 h-100">
+              <span class="badge bg-warning text-dark category-badge">Limited</span>
+              <img src="images/croptops/totebags.jpg" class="card-img-top product-image rounded-0" alt="Crop Top">
+              <div class="card-body">
+                <h5 class="card-title">ALU Crop Top</h5>
+                <p class="card-text text-primary fw-bold">RWF 4,000</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="row mt-5">
+        <div class="col-12">
+          <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+              </li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- View All Button -->
+      <div class="row mt-4">
+        <div class="col-12 text-center">
+          <a href="shop.html" class="btn btn-outline-primary px-4 py-2">View All Products</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h5>ALU Marketplace</h5>
+          <p class="mb-3">A platform for ALU students to buy and sell unique handmade items, fostering creativity and community within our vibrant student body.</p>
+        </div>
+        <div class="col-lg-2">
+          <h5>Shop</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-decoration-none text-white-50">All Products</a></li>
+            <li><a href="#" class="text-decoration-none text-white-50">New Arrivals</a></li>
+            <li><a href="#" class="text-decoration-none text-white-50">Featured</a></li>
+            <li><a href="#" class="text-decoration-none text-white-50">Sale</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2">
+          <h5>About</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-decoration-none text-white-50">Our Story</a></li>
+            <li><a href="#" class="text-decoration-none text-white-50">Sell on ALU</a></li>
+            <li><a href="#" class="text-decoration-none text-white-50">FAQ</a></li>
+            <li><a href="#" class="text-decoration-none text-white-50">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <h5>Stay Connected</h5>
+          <p>Subscribe to our newsletter for updates on new products and events.</p>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Your email" aria-label="Your email">
+            <button class="btn btn-primary" type="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4 pt-4 border-top">
+        <div class="col-md-6">
+          <p class="mb-0">&copy; 2025 ALU Marketplace. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="#" class="text-white-50 me-3">Privacy Policy</a>
+          <a href="#" class="text-white-50 me-3">Terms of Service</a>
+          <a href="#" class="text-white-50">Shipping Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="/ALU-Marketplace/js/shop.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+</body>
+</html>

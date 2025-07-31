@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="author" content="">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <title>ALU Marketplace - Upload Item</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Marcellus&display=swap" rel="stylesheet">
+  <style>
+    .upload-form-container {
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+
+    .image-preview {
+      width: 100%;
+      min-height: 200px;
+      border: 2px dashed #ccc;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .image-preview.has-images {
+      border: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+    }
+
+    .preview-item {
+      position: relative;
+      height: 150px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .preview-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .preview-item .remove-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: rgba(255,255,255,0.8);
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 14px;
+      color: #dc3545;
+    }
+
+    .upload-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #002e6d;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .upload-btn:hover {
+      background-color: #001f49;
+    }
+
+    .form-section {
+      margin-bottom: 30px;
+    }
+
+    .form-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e9ecef;
+    }
+
+    .nav-tabs .nav-link {
+      color: #495057;
+    }
+
+    .nav-tabs .nav-link.active {
+      color: #002e6d;
+      font-weight: 500;
+    }
+
+    .tab-content {
+      padding: 20px;
+      background-color: white;
+      border: 1px solid #dee2e6;
+      border-top: none;
+      border-radius: 0 0 5px 5px;
+    }
+
+    /* Custom styling for the navbar */
+    .navbar {
+      padding: 0.5rem 3rem;
+      background-color: #002e6d;
+    }
+
+    /* Consistent image sizing */
+    .product-item img {
+      height: 280px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    /* Category image sizing */
+    .main-swiper .swiper-slide img {
+      height: 350px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    /* Collection image sizing */
+    .collection-item .image-holder {
+      height: 100%;
+    }
+
+    .collection-item .image-holder img {
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <path d="M31.008 27.231l-7.58-6.447c-0.784-0.705-1.622-1.029-2.299-0.998 1.789-2.096 2.87-4.815 2.87-7.787 0-6.627-5.373-12-12-12s-12 5.373-12 12 5.373 12 12 12c2.972 0 5.691-1.081 7.787-2.87-0.031 0.677 0.293 1.515 0.998 2.299l6.447 7.58c1.104 1.226 2.907 1.33 4.007 0.23s0.997-2.903-0.23-4.007zM12 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"></path>
+    </symbol>
+    <symbol id="user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <path d="M18 22.082v-1.649c2.203-1.241 4-4.337 4-7.432 0-4.971 0-9-6-9s-6 4.029-6 9c0 3.096 1.797 6.191 4 7.432v1.649c-6.784 0.555-12 3.888-12 7.918h28c0-4.030-5.216-7.364-12-7.918z"></path>
+    </symbol>
+    <symbol id="cart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <path d="M12 29c0 1.657-1.343 3-3 3s-3-1.343-3-3c0-1.657 1.343-3 3-3s3 1.343 3 3z"></path>
+      <path d="M32 29c0 1.657-1.343 3-3 3s-3-1.343-3-3c0-1.657 1.343-3 3-3s3 1.343 3 3z"></path>
+      <path d="M32 16v-12h-24c0-1.105-0.895-2-2-2h-6v2h4l1.502 12.877c-0.915 0.733-1.502 1.859-1.502 3.123 0 2.209 1.791 4 4 4h24v-2h-24c-1.105 0-2-0.895-2-2 0-0.007 0-0.014 0-0.020l26-3.98z"></path>
+    </symbol>
+  </svg>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/main-logo.png" alt="logo" style="max-height: 40px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="shop.html">Shop</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="upload-item.html">Sell</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="seller-dashboard.html">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="header-controls d-flex">
+          <div class="user-controls position-relative me-4">
+            <a href="#" class="text-white">
+              <svg class="svg-icon" width="25" height="25">
+                <use xlink:href="#user"></use>
+              </svg>
+            </a>
+            <div class="dropdown-menu position-absolute bg-white p-3" style="min-width: 200px; right: 0; top: 100%; display: none;">
+              <a href="login.html" class="dropdown-item py-2">Login</a>
+              <a href="signup.html" class="dropdown-item py-2">Sign Up</a>
+            </div>
+          </div>
+          <div class="cart-controls me-3">
+            <a href="add-to-cart.html" class="text-white">
+              <svg class="svg-icon" width="25" height="25">
+                <use xlink:href="#cart"></use>
+              </svg>
+              <span class="cart-count bg-primary text-white">2</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1 class="mb-4">Upload Your Item</h1>
+            <p class="lead mb-5">Complete the form below to list your item for sale on ALU Marketplace.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="upload-form-container">
+              <ul class="nav nav-tabs" id="uploadTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic-info" type="button" role="tab" aria-controls="basic-info" aria-selected="true">Basic Info</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="details-tab" data-bs-toggle="tab" data-bs-target="#details" type="button" role="tab" aria-controls="details" aria-selected="false">Details</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="images-tab" data-bs-toggle="tab" data-bs-target="#images" type="button" role="tab" aria-controls="images" aria-selected="false">Images</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="pricing-tab" data-bs-toggle="tab" data-bs-target="#pricing" type="button" role="tab" aria-controls="pricing" aria-selected="false">Pricing</button>
+                </li>
+              </ul>
+
+              <form id="uploadItemForm">
+                <div class="tab-content" id="uploadTabsContent">
+                  <!-- Basic Info Tab -->
+                  <div class="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="basic-tab">
+                    <div class="form-section">
+                      <div class="mb-3">
+                        <label for="productName" class="form-label">Product Name*</label>
+                        <input type="text" class="form-control" id="productName" required>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="productCategory" class="form-label">Category*</label>
+                        <select class="form-select" id="productCategory" required>
+                          <option value="" selected disabled>Select a category</option>
+                          <option value="clothing">Clothing</option>
+                          <option value="electronics">Electronics</option>
+                          <option value="books">Books</option>
+                          <option value="furniture">Furniture</option>
+                          <option value="accessories">Accessories</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="productDescription" class="form-label">Description*</label>
+                        <textarea class="form-control" id="productDescription" rows="5" required></textarea>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="productCondition" class="form-label">Condition*</label>
+                        <select class="form-select" id="productCondition" required>
+                          <option value="" selected disabled>Select condition</option>
+                          <option value="new">New</option>
+                          <option value="like-new">Like New</option>
+                          <option value="good">Good</option>
+                          <option value="fair">Fair</option>
+                          <option value="poor">Poor</option>
+                        </select>
+                      </div>
+
+                      <div class="d-flex justify-content-between mt-4">
+                        <div></div>
+                        <button type="button" class="btn btn-primary" onclick="document.getElementById('details-tab').click()">Next: Details</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Details Tab -->
+                  <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
+                    <div class="form-section">
+                      <div class="mb-3">
+                        <label for="productBrand" class="form-label">Brand</label>
+                        <input type="text" class="form-control" id="productBrand">
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="productModel" class="form-label">Model</label>
+                        <input type="text" class="form-control" id="productModel">
+                      </div>
+
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <label for="productColor" class="form-label">Color</label>
+                          <input type="text" class="form-control" id="productColor">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                          <label for="productSize" class="form-label">Size</label>
+                          <input type="text" class="form-control" id="productSize">
+                        </div>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="productSpecs" class="form-label">Specifications</label>
+                        <textarea class="form-control" id="productSpecs" rows="4" placeholder="Enter any additional specifications or features"></textarea>
+                      </div>
+
+                      <div class="d-flex justify-content-between mt-4">
+                        <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('basic-tab').click()">Previous</button>
+                        <button type="button" class="btn btn-primary" onclick="document.getElementById('images-tab').click()">Next: Images</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Images Tab -->
+                  <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
+                    <div class="form-section">
+                      <div class="mb-4">
+                        <label class="form-label">Product Images*</label>
+                        <p class="text-muted small">Upload up to 5 images. First image will be used as the main product image.</p>
+
+                        <div class="image-preview" id="imagePreviewContainer">
+                          <div class="text-center">
+                            <p class="mb-3">Drag & drop images here or click to browse</p>
+                            <label for="productImages" class="upload-btn">
+                              <i class="bi bi-upload me-2"></i> Select Images
+                            </label>
+                          </div>
+                        </div>
+
+                        <input type="file" id="productImages" multiple accept="image/*" class="d-none" required>
+                      </div>
+
+                      <div class="d-flex justify-content-between mt-4">
+                        <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('details-tab').click()">Previous</button>
+                        <button type="button" class="btn btn-primary" onclick="document.getElementById('pricing-tab').click()">Next: Pricing</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Pricing Tab -->
+                  <div class="tab-pane fade" id="pricing" role="tabpanel" aria-labelledby="pricing-tab">
+                    <div class="form-section">
+                      <div class="row">
+                        <div class="col-md-6 mb-3">
+                          <label for="productPrice" class="form-label">Price (RWF)*</label>
+                          <div class="input-group">
+                            <span class="input-group-text">RWF</span>
+                            <input type="number" class="form-control" id="productPrice" min="0" step="100" required>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                          <label for="productSalePrice" class="form-label">Sale Price (RWF)</label>
+                          <div class="input-group">
+                            <span class="input-group-text">RWF</span>
+                            <input type="number" class="form-control" id="productSalePrice" min="0" step="100">
+                          </div>
+                          <div class="form-text">Leave empty if not on sale</div>
+                        </div>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="productQuantity" class="form-label">Quantity Available*</label>
+                        <input type="number" class="form-control" id="productQuantity" min="1" value="1" required>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="shippingOptions" class="form-label">Shipping Options*</label>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="pickup" id="pickupOption" checked>
+                          <label class="form-check-label" for="pickupOption">
+                            Pickup (ALU Campus)
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="delivery" id="deliveryOption">
+                          <label class="form-check-label" for="deliveryOption">
+                            Delivery (Kigali)
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="mb-3">
+                        <label for="deliveryFee" class="form-label">Delivery Fee (RWF)</label>
+                        <div class="input-group">
+                          <span class="input-group-text">RWF</span>
+                          <input type="number" class="form-control" id="deliveryFee" min="0" step="100" disabled>
+                        </div>
+                      </div>
+
+                      <div class="d-flex justify-content-between mt-4">
+                        <button type="button" class="btn btn-outline-secondary" onclick="document.getElementById('images-tab').click()">Previous</button>
+                        <button type="submit" class="btn btn-success">Submit Listing</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-5 bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mb-4 mb-md-0">
+          <h5 class="mb-4">ALU Marketplace</h5>
+          <p>Buy and sell items within the ALU community. Find everything from textbooks to electronics, clothing, and more.</p>
+        </div>
+        <div class="col-md-3 mb-4 mb-md-0">
+          <h5 class="mb-4">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-white">Home</a></li>
+            <li class="mb-2"><a href="shop.html" class="text-white">Shop</a></li>
+            <li class="mb-2"><a href="upload-item.html" class="text-white">Sell</a></li>
+            <li class="mb-2"><a href="seller-dashboard.html" class="text-white">Dashboard</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mb-4 mb-md-0">
+          <h5 class="mb-4">Customer Service</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="#" class="text-white">Contact Us</a></li>
+            <li class="mb-2"><a href="#" class="text-white">FAQs</a></li>
+            <li class="mb-2"><a href="#" class="text-white">Terms & Conditions</a></li>
+            <li class="mb-2"><a href="#" class="text-white">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5 class="mb-4">Connect With Us</h5>
+          <div class="d-flex gap-3 mb-4">
+            <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+          </div>
+          <p>Subscribe to our newsletter</p>
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Your email">
+            <button class="btn btn-primary" type="button">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-12 text-center">
+          <p class="mb-0">© 2023 ALU Marketplace. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/script.min.js"></script>
+  <script src="/upload.js"></script>
+  <script>
+    // User dropdown toggle
+    document.querySelector('.user-controls').addEventListener('mouseenter', function() {
+      this.querySelector('.dropdown-menu').style.display = 'block';
+    });
+
+    document.querySelector('.user-controls').addEventListener('mouseleave', function() {
+      this.querySelector('.dropdown-menu').style.display = 'none';
+    });
+
+    // Image preview functionality
+    const imageInput = document.getElementById('productImages');
+    const previewContainer = document.getElementById('imagePreviewContainer');
+
+    imageInput.addEventListener('change', function() {
+      if (this.files.length > 0) {
+        previewContainer.innerHTML = '';
+        previewContainer.classList.add('has-images');
+
+        for (let i = 0; i < Math.min(this.files.length, 5); i++) {
+          const file = this.files[i];
+          const reader = new FileReader();
+
+          reader.onload = function(e) {
+            const previewItem = document.createElement('div');
+            previewItem.className = 'preview-item';
+
+            const img = document.createElement('img');
+            img.src = e.target.result;
+
+            const removeBtn = document.createElement('div');
+            removeBtn.className = 'remove-btn';
+            removeBtn.innerHTML = '×';
+            removeBtn.addEventListener('click', function() {
+              previewItem.remove();
+              if (previewContainer.querySelectorAll('.preview-item').length === 0) {
+                previewContainer.classList.remove('has-images');
+                previewContainer.innerHTML = `
+                  <div class="text-center">
+                    <p class="mb-3">Drag & drop images here or click to browse</p>
+                    <label for="productImages" class="upload-btn">
+                      <i class="bi bi-upload me-2"></i> Select Images
+                    </label>
+                  </div>
+                `;
+              }
+            });
+
+            previewItem.appendChild(img);
+            previewItem.appendChild(removeBtn);
+            previewContainer.appendChild(previewItem);
+          };
+
+          reader.readAsDataURL(file);
+        }
+      }
+    });
+
+    // Enable/disable delivery fee input based on delivery option
+    document.getElementById('deliveryOption').addEventListener('change', function() {
+      document.getElementById('deliveryFee').disabled = !this.checked;
+      if (!this.checked) {
+        document.getElementById('deliveryFee').value = '';
+      }
+    });
+
+    // Form submission
+    document.getElementById('uploadItemForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Validate form
+      const requiredFields = this.querySelectorAll('[required]');
+      let isValid = true;
+
+      requiredFields.forEach(field => {
+        if (!field.value) {
+          isValid = false;
+          field.classList.add('is-invalid');
+        } else {
+          field.classList.remove('is-invalid');
+        }
+      });
+
+      if (isValid) {
+        // Show success message
+        alert('Your item has been submitted successfully!');
+        this.reset();
+        previewContainer.classList.remove('has-images');
+        previewContainer.innerHTML = `
+          <div class="text-center">
+            <p class="mb-3">Drag & drop images here or click to browse</p>
+            <label for="productImages" class="upload-btn">
+              <i class="bi bi-upload me-2"></i> Select Images
+            </label>
+          </div>
+        `;
+        document.getElementById('basic-tab').click();
+      } else {
+        // Show error message
+        alert('Please fill in all required fields.');
+      }
+    });
+  </script>
+</body>
+</html>
+
