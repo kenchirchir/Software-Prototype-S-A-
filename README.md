@@ -58,5 +58,3 @@ ALU Marketplace is an e-commerce platform designed for students at the African L
 For any issues or contributions, please open an issue on GitHub.
 
 
-
->>>>>>> aae11a5 (Site module)
